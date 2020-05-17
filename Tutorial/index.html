@@ -1,0 +1,52 @@
+<html>
+
+<head>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
+        integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+</head>
+
+<body>
+    <div id="app">
+        {{message}}
+    </div>
+    <div id="app2">
+        <span v-bind:title="message">
+            Hover your mouse over me for a 
+            few seconds to see my dynamically
+            bound title!
+        </span>
+    </div>
+    <div id="app3">
+        <span v-if="seen">Now you see me</span>
+    </div>
+    <div id="app4">
+        <ol>
+            <li v-for="todo in todos">
+                {{todo.text}}
+            </li>
+        </ol>
+    </div>
+    <div id="app5">
+        <p>{{message}}</p>
+        <button v-on:click="reverseMessage">Reverse Message</button>
+    </div>
+    <div id="app6">
+        <p>{{message}}</p>
+        <input v-model="message">
+    </div>
+    <div id="component1">
+       <todo-item
+        v-for="item in groceryList"
+        v-bind:todo="item"
+        v-bind:key="item.id"
+       ></todo-item>
+    </div>
+    <div id="app7">
+        <p>{{foo}}</p>
+        <button v-on:click="foo = 'baz'">Change it</button>
+    </div>
+<script src="index.js"></script>
+</body>
+
+</html>

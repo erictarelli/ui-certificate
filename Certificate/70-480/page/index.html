@@ -1,0 +1,26 @@
+<html>
+  <head>
+    <link
+      rel="stylesheet"
+      href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
+      integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh"
+      crossorigin="anonymous"
+    />
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+  </head>
+
+  <body>
+    <main>
+      <div v-for="exam in listExam">
+        <h3>{{exam.NumberQuestion}} ({{exam.Model}})</h3>
+        <p v-for="item in exam.Introductions">
+          {{item}}
+        </p>
+        <custom-input
+          v-bind:list-option="exam.Options"
+        ></custom-input>
+      </div>
+    </main>
+    <script src="../js/index.js"></script>
+  </body>
+</html>
