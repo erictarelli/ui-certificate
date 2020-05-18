@@ -18,8 +18,9 @@
         v-bind:_item="item"
         ></custom-p>
         <custom-input 
-        v-for="option in exam.Options" 
-        v-bind:_option="option"
+        v-for="(item,index) in exam.Options" 
+        v-bind:_option_key="index"
+        v-bind:_option_value="item"
         v-bind:_type="exam.TypeOption"></custom-input>
       </div>
     </main>

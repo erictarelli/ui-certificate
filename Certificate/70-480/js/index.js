@@ -32,10 +32,10 @@ const service = {
         "5": "Which code segment should you use?"
       },
       "Options": {
-        "A": "document.getElementById(\"Div1\").appendChild(document.getElementById(\"Span1\"))",
-        "B": "var moveElement = document.getElementById(\"Div1\").moveElement.parentNode.appendChild(moveElement);",
-        "C": "document.getElementById(\"Span1\").appendChild(document.getElementById(\"Div1\")",
-        "D": "var moveElement = document.getElementById(\"Span1\"); moveElement.parentNode.appendChild(moveElement)"
+        "A": "function validate() {\n\tvar value=$(\"txtValue\").text();\n\tvar regex = /^[\d\,.]*$/;\n\tif(!regex.test(value) || name == \"\")\n\t\talert(\"please enter valid value\");\n\treturn;\n}",
+        "B": "function validate() {\n\tvar value=$(\"txtValue\").text();\n\tvar regex = /^[\d\,.]*$/;\n\tif(!regex.test(value) || name == \"\")\n\t\talert(\"please enter valid value\");\n\treturn;\n}",
+        "C": "function validate() {\n\tvar value=$(\"txtValue\").text();\n\tvar regex = /^[\d\,.]*$/;\n\tif(!regex.test(value) || name == \"\")\n\t\talert(\"please enter valid value\");\n\treturn;\n}",
+        "D": "function validate() {\n\tvar value=$(\"txtValue\").text();\n\tvar regex = /^[\d\,.]*$/;\n\tif(!regex.test(value) || name == \"\")\n\t\talert(\"please enter valid value\");\n\treturn;\n}",
       },
       "TypeOption": "radio",
       "Results": [
@@ -47,14 +47,14 @@ const service = {
 
 Vue.component('custom-input', {
   props:[
-    '_option',
+    '_option_key',
+    '_option_value',
     '_type'
   ],
   template: `
     <div>
-     <input v-if="_type === 'radio'" type="radio" name="_type">
-     <input v-if="_type === 'text'" type="text">
-     <label>{{_option}}</label>
+     <input :type="_type" name="_type">
+     <label>{{_option_key}} - <pre class="text-primary">{{_option_value}}</pre></label>
     </div>
   `
 })
