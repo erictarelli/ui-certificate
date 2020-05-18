@@ -5,7 +5,7 @@ const service = {
       "Model": "Volume A",
       "Introductions": {
         "1": "You have a webpage that includes the following markup:",
-        "2": "<!DOCTYPE html>\n<html>\n\t<head>\n\t\t<script src=\"jquery.js\"></script>\n\t\t<script>\n\t\t</script></head>\n\t<body>\n\t\t<div id=\"Div1\"></div>\n\t\t<span id=\"Span1\"></span>\n\t</body>\n</html>",
+        "2": "<!DOCTYPE html>\n<html>\n\t<head>\n\t\t<script src=\"jquery.js\"></script>\n\t\t<script></script>\n\t</head>\n\t<body>\n\t\t<div id=\"Div1\"></div>\n\t\t<span id=\"Span1\"></span>\n\t</body>\n</html>",
         "3": "When the page is loaded, the SPAN element must be moved as follows:",
         "4": "<div id=\"Div1\"><span id=\"Span1\"></span></div>",
         "5": "You need to move the SPAN element and preserve any event handlers attached to the SPAN which code segment should you use?"
@@ -68,7 +68,7 @@ Vue.component('custom-p', {
   },
   template: `
     <div>
-     <p v-if="isHTML(_item)" class="text-justify font-weight-bold">{{_item}}<p/>
+     <p v-if="isHTML(_item)"><pre class="text-primary">{{_item}}</pre><p/>
      <p v-if="!isHTML(_item)" class="text-justify">{{_item}}<p/>
     </div>
   `
