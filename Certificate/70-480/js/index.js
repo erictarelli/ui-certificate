@@ -16,7 +16,7 @@ const service = {
         "C": "document.getElementById(\"Span1\").appendChild(document.getElementById(\"Div1\")",
         "D": "var moveElement = document.getElementById(\"Span1\"); moveElement.parentNode.appendChild(moveElement)"
       },
-      "StyleExam": "radio",
+      "TypeOption": "radio",
       "Results": [
         1
       ]
@@ -37,7 +37,7 @@ const service = {
         "C": "document.getElementById(\"Span1\").appendChild(document.getElementById(\"Div1\")",
         "D": "var moveElement = document.getElementById(\"Span1\"); moveElement.parentNode.appendChild(moveElement)"
       },
-      "StyleExam": "RADIO",
+      "TypeOption": "radio",
       "Results": [
         1
       ]
@@ -46,8 +46,32 @@ const service = {
 }
 
 Vue.component('custom-input', {
-  props: ['list-option'],
-  template: '<input v-for="options in list-option">'
+  props:[
+    '_option',
+    '_type'
+  ],
+  template: `
+    <div>
+     <input v-if="_type === 'radio'" type="radio" name="_type">
+     <input v-if="_type === 'text'" type="text">
+     <label>{{_option}}</label>
+    </div>
+  `
+})
+
+Vue.component('custom-p', {
+  props:['_item'],
+  methods: {
+    isHTML: function (text) {
+      return /</.test(text)
+    }
+  },
+  template: `
+    <div>
+     <p v-if="isHTML(_item)" class="text-justify font-weight-bold">{{_item}}<p/>
+     <p v-if="!isHTML(_item)" class="text-justify">{{_item}}<p/>
+    </div>
+  `
 })
 
 new Vue({

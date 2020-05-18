@@ -10,15 +10,17 @@
   </head>
 
   <body>
-    <main>
+    <main class="container-fluid">
       <div v-for="exam in listExam">
         <h3>{{exam.NumberQuestion}} ({{exam.Model}})</h3>
-        <p v-for="item in exam.Introductions">
-          {{item}}
-        </p>
-        <custom-input
-          v-bind:list-option="exam.Options"
-        ></custom-input>
+        <custom-p
+        v-for="item in exam.Introductions"
+        v-bind:_item="item"
+        ></custom-p>
+        <custom-input 
+        v-for="option in exam.Options" 
+        v-bind:_option="option"
+        v-bind:_type="exam.TypeOption"></custom-input>
       </div>
     </main>
     <script src="../js/index.js"></script>
