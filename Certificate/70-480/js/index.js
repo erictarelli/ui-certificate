@@ -32,10 +32,30 @@ const service = {
         "5": "Which code segment should you use?"
       },
       "Options": {
-        "A": "function validate() {\n\tvar value=$(\"txtValue\").text();\n\tvar regex = /^[\d\,.]*$/;\n\tif(!regex.test(value) || name == \"\")\n\t\talert(\"please enter valid value\");\n\treturn;\n}",
-        "B": "function validate() {\n\tvar value=$(\"txtValue\").text();\n\tvar regex = /^[\d\,.]*$/;\n\tif(!regex.test(value) || name == \"\")\n\t\talert(\"please enter valid value\");\n\treturn;\n}",
-        "C": "function validate() {\n\tvar value=$(\"txtValue\").text();\n\tvar regex = /^[\d\,.]*$/;\n\tif(!regex.test(value) || name == \"\")\n\t\talert(\"please enter valid value\");\n\treturn;\n}",
-        "D": "function validate() {\n\tvar value=$(\"txtValue\").text();\n\tvar regex = /^[\d\,.]*$/;\n\tif(!regex.test(value) || name == \"\")\n\t\talert(\"please enter valid value\");\n\treturn;\n}",
+        "A": "function validate() {\n\tvar value = $(\"txtValue\").text();\n\tvar regex = /^[\d\,\.]*$/;\n\tif (!regex.test(value) || name == \"\")\n\t\talert(\"please enter valid value\");\n\treturn;\n}",
+        "B": "function validate() {\n\tvar name = $(\"txtValue\").val();\n\tif (name == null || name == \"\")\n\t\talert(\"please enter valid value\");\n\treturn;\n}",
+        "C": "function validate() {\n\tvar name = $(\"txtValue\").text();\n\tif (name == null || name == \"\")\n\t\talert(\"please enter valid value\");\n\treturn;\n}",
+        "D": "\tfunction validate() {\n\t\tvar value = $(\"txtValue\").val();\n\t\tvar regex = /^[\d\,\.]*$/;\n\t\tif (!regex.test(value) || value == \"\")\n\t\t\talert(\"please enter valid value\");\n\t\treturn;\n\t}\n\treturn emailPattern.test(userinput);\n}",
+      },
+      "TypeOption": "radio",
+      "Results": [
+        1
+      ]
+    },
+    {
+      "Model": "Volume A",
+      "NumberQuestion": "Question 3",
+      "Introductions": {
+        "1": "You are developing a customer contact form that will be displayed on a page of a company's website. The page collects information about the customer.",
+        "2": "If a customer enters a value before submitting the form, it must be a valid email address",
+        "3": "You need to ensure that the data validation requirement is met",
+        "4": "What should you use?"
+      },
+      "Options": {
+        "A": "<input name =\"email\" type=\"url\"/>",
+        "B": "<input name =\"email\" type=\"text\" required=\"required\"/>",
+        "C": "<<input name =\"email\" type=\"text\"/>",
+        "D": "<input name =\"email\" type=\"email\"/>",
       },
       "TypeOption": "radio",
       "Results": [
@@ -54,7 +74,7 @@ Vue.component('custom-input', {
   template: `
     <div>
      <input :type="_type" name="_type">
-     <label>{{_option_key}} - <pre class="text-primary">{{_option_value}}</pre></label>
+     <label>{{_option_key}}. <pre class="text-primary">{{_option_value}}</pre></label>
     </div>
   `
 })
@@ -63,7 +83,7 @@ Vue.component('custom-p', {
   props:['_item'],
   methods: {
     isHTML: function (text) {
-      return /</.test(text)
+      return /(\<\w*)((\s\/\>)|(.*\<\/\w*\>))/.test(text)
     }
   },
   template: `

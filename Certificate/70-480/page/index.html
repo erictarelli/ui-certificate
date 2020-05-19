@@ -11,18 +11,22 @@
 
   <body>
     <main class="container-fluid bg-dark text-white">
-      <div v-for="exam in listExam">
-        <h3>{{exam.NumberQuestion}} ({{exam.Model}})</h3>
-        <custom-p
-        v-for="item in exam.Introductions"
-        v-bind:_item="item"
-        ></custom-p>
-        <custom-input 
-        v-for="(item,index) in exam.Options" 
-        v-bind:_option_key="index"
-        v-bind:_option_value="item"
-        v-bind:_type="exam.TypeOption"></custom-input>
-      </div>
+        <div v-for="exam in listExam">
+          <h3>{{exam.NumberQuestion}} ({{exam.Model}})</h3>
+          <custom-p
+            v-for="item in exam.Introductions"
+            v-bind:_item="item"
+          ></custom-p>
+          <custom-input
+            v-for="(item,index) in exam.Options"
+            v-bind:_option_key="index"
+            v-bind:_option_value="item"
+            v-bind:_type="exam.TypeOption"
+          ></custom-input>
+        </div>
+        <p>
+          <input type="button" value="Finalizar evaluacion">
+        </p>
     </main>
     <script src="../js/index.js"></script>
   </body>
