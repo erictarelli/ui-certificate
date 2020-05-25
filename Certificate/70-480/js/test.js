@@ -3,10 +3,10 @@ const service = {
 };
 const test = {
   teacher: ["Eric", "Delia", "Indiana"],
-  result: [1, 2],
+  result: [false, true, true],
 };
-Vue.component("my-li", {
-  props: ["_name", "_id"],
+Vue.component('my-li', {
+  props: ['_name', '_id'],
   template: `
         <li :id="_id" v-on:click="deleteName(_id)">{{_name}}</li>
     `,
@@ -18,9 +18,8 @@ Vue.component("my-li", {
     },
   },
 });
-
-Vue.component("my-button", {
-  props: ["_show"],
+Vue.component('my-button', {
+  props: ['_show'],
   template: `
     <div>
         <input type="button" value="End" v-on:click="getResult">
@@ -29,17 +28,25 @@ Vue.component("my-button", {
   methods: {
     getResult: function () {
       var listInput = document.getElementsByClassName("test");
+      var show = false;
 
       for (let index = 0; index < listInput.length; index++) {
         var element = listInput[index];
-        if (element.checked) vm.message = index;
+
+        if (element.checked === vm.listResult[index]) {
+          show = true;
+        } else {
+          show = false;
+          break;
+        }
       }
+
+      vm.showResult = show;
     },
   },
 });
-
-Vue.component("my-input", {
-  props: ["_teacher", "_id"],
+Vue.component('my-input', {
+  props: ['_teacher', '_id'],
   template: `
     <div>
         <input type="checkbox" :id="_id" :name="_id" class="test">
@@ -47,13 +54,12 @@ Vue.component("my-input", {
     </div>        
     `,
 });
-
 var vm = new Vue({
-  el: "main",
+  el: 'main',
   data: {
     listNames: service.name,
     listTeacher: test.teacher,
     listResult: test.result,
-    message: 0,
+    showResult: ''
   },
 });
