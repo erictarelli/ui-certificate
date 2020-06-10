@@ -11,9 +11,7 @@
 
   <body>
     <div class="container-fluid bg-dark text-white">
-      <main>
-        {{listResult}}
-        <div-result-test></div-result-test>
+      <main>       
         <div v-for="(exam,index_exam) in listExam">
           <h3>{{exam.NumberQuestion}} ({{exam.Model}})</h3>
           <custom-p
@@ -29,6 +27,11 @@
           ></custom-input>
         </div>
         <button-end-test></button-end-test>     
+        <hr>
+        {{listResult}}
+        <div-result-test 
+        v-show="isTestCompleted"
+        v-bind:_list_result="listResult"></div-result-test>
       </main>
     </div>
     <script src="../js/index.js"></script>

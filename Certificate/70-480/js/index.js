@@ -71,7 +71,7 @@ const service = {
         D: '<input name ="email" type="email"/>',
       },
       TypeOption: "radio",
-      Results: [false, true, false, true],
+      Results: [false, true, false, false],
       ID: "Q3VA",
     },
     {
@@ -88,17 +88,41 @@ const service = {
         D: '<input name ="email" type="email"/>',
       },
       TypeOption: "radio",
-      Results: [false, true, false, true],
+      Results: [false, true, false, false],
       ID: "Q4VA",
     },
   ],
 };
 
 Vue.component("div-result-test", {
-  props: [],
+  props: ["_list_result"],
+  methods: {
+    getCorrectItems: function () {
+
+      var result = this.$props._list_result.filter(function (item) {
+        return item === true;
+      }).length;
+
+      return result;
+    },
+    getTotal: function () {
+      return this.$props._list_result.length;
+    },
+    getClassAlert:function(){
+
+      if(this.getCorrectItems() < (this.getTotal()*0.7))
+        return "alert alert-danger"
+      return "alert alert-success"
+    }    
+  },
   template: `
   <div>
-    <p>Resultado de la evaluacion</p>
+    <div :class="[getClassAlert()]" role="alert">
+      <h4 class="alert-heading">Well done!</h4>
+      <p>You pass the exam with {{getCorrectItems()}}/{{getTotal()}} </p>
+      <hr>
+      <p class="mb-0">Whenever you need to, be sure to use margin utilities to keep things nice and tidy.</p>
+    </div>
   </div>
   `,
 });
@@ -141,6 +165,7 @@ Vue.component("button-end-test", {
       }
 
       global_vm.listResult = listResult;
+      global_vm.isTestCompleted = true;
     },
   },
 });
@@ -149,7 +174,7 @@ Vue.component("custom-input", {
   props: ["_option_key", "_option_value", "_type", "_index_exam"],
   template: `
     <div class="row">
-     <input class="w-1" :type="_type" name="_type">
+     <input class="w-1" :type="_type" :name="_index_exam">
      <label class="col">{{_option_key}}. <pre class="text-primary">{{_option_value}}</pre></label>
     </div>
   `,
@@ -175,5 +200,6 @@ var global_vm = new Vue({
   data: {
     listExam: service.exams,
     listResult: [],
+    isTestCompleted: false,
   },
 });
