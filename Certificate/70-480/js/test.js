@@ -5,6 +5,7 @@ const test = {
   teacher: ["Eric", "Delia", "Indiana"],
   result: [false, true, true],
 };
+
 Vue.component('my-li', {
   props: ['_name', '_id'],
   template: `
